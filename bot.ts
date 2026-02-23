@@ -9,7 +9,12 @@ export const client = new Client({
 });
 
 // Using the provided token from the user
-const BOT_TOKEN = process.env.DISCORD_TOKEN || "MTQ3NTM2MjM1MTUzOTU1NjUwNg.GKC34l.vDrxP8Um3aBl2otFL2q1yOWe1KgCGD6K5LifF0";
+const BOT_TOKEN = process.env.DISCORD_TOKEN;
+
+if (!BOT_TOKEN) {
+  console.error("No Discord token provided.");
+  process.exit(1); // stops the bot if token is missing
+}
 
 const DEPARTMENTS = [
   "New York State Police",
